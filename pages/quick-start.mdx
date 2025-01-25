@@ -1,0 +1,32 @@
+---
+title: "Quick Start"
+description: "Get NaireAI up and running as fast as possible."
+---
+
+# Quick Start
+
+This guide helps you set up **NaireAI** in a few steps.
+
+## Requirements
+
+1. **Node.js 18+** (for native fetch API)  
+2. **Solscan API Key** stored in your `.env` as `SOLSCAN_API_KEY=YOUR_KEY`.
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/NaireAI/NaireAI-Agent.git
+
+# Change directory
+cd NaireAI-Agent
+
+# Install dependencies
+npm install
+# or yarn
+
+# Create a .env file with your Solscan key
+echo "SOLSCAN_API_KEY=YOUR_KEY_HERE" > .env
+
+# Run in dev mode
+npm run dev

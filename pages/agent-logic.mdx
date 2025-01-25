@@ -1,0 +1,40 @@
+---
+title: "Agent Logic"
+description: "A deeper look at how the agent's instructions and tools interact."
+---
+
+# Agent Logic
+
+NaireAI’s agent logic revolves around:
+
+1. **Instructions**: The textual prompt that shapes the agent’s personality, tone, and function usage.  
+2. **Tools**: Declared in each agent’s config. They map to actual logic in `toolLogic.ts`.  
+3. **Server Event Handling**: The agent can call functions which the server (via `useHandleServerEvent`) executes.
+
+## Example: solanaBetaAgent
+
+```ts
+const solanaBetaAgent: AgentConfig = {
+  name: "solanaBetaAgent",
+  instructions: "...", // large prompt detailing the agent's personality & flow
+  tools: [
+    {
+      type: "function",
+      name: "getSignersByProgramId",
+      parameters: { ... },
+    },
+    {
+      type: "function",
+      name: "analyzeWallet",
+      parameters: { ... },
+    },
+  ],
+  toolLogic: {
+    async getSignersByProgramId(args) {
+      return await getSignersByProgramIdLogic(args);
+    },
+    async analyzeWallet(args) {
+      return await analyzeWalletLogic(args);
+    },
+  },
+};
